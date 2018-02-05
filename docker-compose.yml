@@ -1,0 +1,19 @@
+version: '2'
+services:
+  web:
+    build: .
+    command: npm run dev
+    links:
+      - postgresql
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://todoapp@postgresql/todos
+  postgresql:
+    image: postgres:9.4.9
+    environment:
+      POSTGRES_USER: todoapp
+      POSTGRES_DB: todos

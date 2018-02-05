@@ -6,3 +6,4 @@ build
 jest
 *.env
 codeship.aes
+jest*
